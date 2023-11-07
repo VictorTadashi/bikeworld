@@ -68,7 +68,7 @@ const UsuarioSchema = new mongoose.Schema({
     res.sendFile(__dirname + "/cadastrousuario.html");
   });
   
-  app.get("/", async (req, res) => {
+  app.get("/cadastroprodutobicicleta", async (req, res) => {
     res.sendFile(__dirname + "/index.html");
   });
   
