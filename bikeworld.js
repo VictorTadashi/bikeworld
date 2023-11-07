@@ -71,7 +71,7 @@ const UsuarioSchema = new mongoose.Schema({
   app.get("/cadastroprodutobicicleta", async (req, res) => {
     res.sendFile(__dirname + "/index.html");
   });
-  
+
   app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
   });
