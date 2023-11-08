@@ -20,7 +20,7 @@ const UsuarioSchema = new mongoose.Schema({
   
   const Usuario = mongoose.model("Usuario", UsuarioSchema);
   
-  const produtobicicleta = new mongoose.Schema({
+  const ProdutobicicletaSchema = new mongoose.Schema({
     id_produtobicicleta: {type: Number, required: true},
     descrição: {type: String},
     marca: {type: String},
@@ -28,13 +28,13 @@ const UsuarioSchema = new mongoose.Schema({
     quantidadeestoque: {type: Number}
   });
 
-  const Produtobicicleta = mongoose.model("Produtobicicleta", UsuarioSchema);
+  const Produtobicicleta = mongoose.model("Produtobicicleta", ProdutobicicletaSchema);
 
   app.post("/cadastrousuario", async (req, res) => {
     const usuario = req.body.usuario;
     const produtobicicleta = req.body.req.body.usuario
 
-    const cadastrousuario = new Usuario({
+    const Usuario = new Usuario({
         Usuario: usuario,
         produtobicicleta: produtobicicleta,
       });
@@ -46,12 +46,12 @@ const UsuarioSchema = new mongoose.Schema({
 
   app.post("/cadastroprodutobicicleta", async (req, res) => {
     const id_produtobicicleta = req.body.id_produtobicicleta;
-    const descrição = req.body.descrição;
+    const descrição = req.body.descricao;
     const marca = req.body.marca;
     const datafabricacao = req.body.datafabricacao;
     const quantidadeestoque = req.body.quantidadeestoque;
 
-    const produtobicicleta = new produtobicicleta({
+    const produtobicicleta = new Produtobicicleta({
         id_produtobicicleta: id_produtobicicleta,
         descrição: descrição,
         marca: marca,
@@ -59,16 +59,12 @@ const UsuarioSchema = new mongoose.Schema({
         quantidadeestoque: quantidadeestoque
       });  
       try {
-    const newUsuario = await usuario.save();
-    res.json({ error: null, msg: "Cadastro ok", UsuarioId: newUsuario._id });
+    const newProdutobicicleta = await produtobicicleta.save();
+    res.json({ error: null, msg: "Cadastro ok", ProdutobicicletaId: newProdutobicicleta._id });
   } catch (error) {}
   })
 
   app.get("/cadastrousuario", async (req, res) => {
-    res.sendFile(__dirname + "/cadastrousuario.html");
-  });
-  
-  app.get("/cadastroprodutobicicleta", async (req, res) => {
     res.sendFile(__dirname + "/index.html");
   });
 
